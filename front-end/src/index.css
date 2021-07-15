@@ -1,0 +1,293 @@
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond&family=Tourney&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+/*
+=============== 
+Variables
+===============
+*/
+
+:root {
+  --classic-black: #1c1c1c;
+  --vampire-black: #0f0404;
+  --clr-blue: #528cd3;
+  --strong-yellow: #f7de3a;
+  --white-smoke: #fafaf8;
+  --clr-white: #fff;
+  --clr-grey: #e2e2e0;
+  --clr-grey-2: #d5d5d4;
+  --clr-red-dark: hsl(360, 67%, 44%);
+  --clr-red-light: hsl(360, 71%, 66%);
+  --clr-green-dark: hsl(125, 67%, 44%);
+  --clr-green-light: hsl(125, 71%, 66%);
+  --clr-black: #222;
+  /* fontes */
+  --primary-font: "Tourney";
+  --secondary-font: "Quicksand";
+  --third-font: "EB Garamond";
+  --transition: all 0.3s linear;
+  --spacing: 0.1rem;
+  --radius: 0.25rem;
+  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  --max-width: 1170px;
+  --fixed-width: 620px;
+}
+/*
+=============== 
+Global Styles
+===============
+*/
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background: var(--clr-white);
+  color: var(--clr-grey-1);
+  line-height: 1.5;
+  font-size: 0.875rem;
+  background-image: url("./assets/bg-2.jpg");
+  background-position: left;
+  background-size: auto;
+  background-repeat: no-repeat;
+}
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+hr {
+  border: none;
+  border-top: 1px solid var(--clr-grey-8);
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  letter-spacing: var(--spacing);
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+h1 {
+  font-size: 2.5rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.5rem;
+}
+h4 {
+  font-size: 1.25rem;
+}
+h5 {
+  font-size: 0.875rem;
+}
+p {
+  margin-bottom: 1.25rem;
+  color: var(--clr-grey-3);
+}
+.grow {
+  transition: all 0.2s ease-in-out;
+}
+
+.grow:hover {
+  transform: scale(1.1);
+}
+
+@media screen and (min-width: 800px) {
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 2rem;
+  }
+  h4 {
+    font-size: 1.5rem;
+  }
+  h5 {
+    font-size: 1rem;
+  }
+  body {
+    font-size: 1rem;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1;
+  }
+}
+/*  global classes */
+
+/* section */
+.section {
+  padding: 5rem 0;
+  display: flex;
+}
+.section-center {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: var(--max-width);
+  border-radius: 8px;
+}
+
+/*
+=============== 
+Loading
+===============
+ */
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  width: 6rem;
+  height: 6rem;
+  margin: 0 auto;
+  margin-top: 10rem;
+  border-radius: 50%;
+  border: 3px solid #ccc;
+  border-top-color: var(--clr-primary-5);
+  animation: spinner 0.6s linear infinite;
+}
+
+.main-container {
+  display: flex;
+  align-items: center;
+  height: 55rem;
+}
+
+.center-att {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 
+============
+Button Style
+============
+*/
+
+.primary-btn,
+.primary-btn2 {
+  width: 245px;
+  height: 45px;
+  font-size: 30px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+  border-radius: 50px;
+  border-color: transparent;
+  background: linear-gradient(-45deg, #ffa63d, #ff3d77, #338aff, #3cf0c5);
+  background-size: 600%;
+  animation: anime 16s linear infinite;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(255, 166, 61, 0.79),
+    0 14px 35px rgba(255, 61, 119, 0.61),
+    10px 10px 32px rgba(51, 138, 255, 0.65);
+}
+.btn2 {
+  position: absolute;
+  margin-top: -70px;
+  z-index: -1;
+  filter: blur(30px);
+  opacity: 0.8;
+}
+
+.primary-btn:hover,
+.primary-btn2:hover {
+  animation: anime2 12s ease infinite;
+}
+
+@keyframes anime {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes anime2 {
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  0% {
+    background-position: 0% 50%;
+  }
+}
+
+/* 
+==========
+form
+==========
+*/
+
+.form-container {
+  height: 590px;
+  width: 570px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 18px;
+  border: solid #afb1a9;
+  background-color: var(--white-smoke);
+  box-shadow: 2px 1px 75px 1px rgba(0, 0, 0, 0.54);
+}
+
+@media screen and (min-width: 992px) {
+  body {
+    background-image: url("./assets/bg-1.jpg");
+    background-position: left;
+    background-size: cover;
+  }
+  .section-center {
+    position: static;
+    width: 72vw;
+    height: 540px;
+  }
+  .primary-btn,
+  .primary-btn2 {
+    width: 275px;
+    height: 75px;
+  }
+  .main-container {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+  }
+  .form-container {
+    height: 590px;
+    width: 570px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .center-att {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 56%;
+  }
+}
