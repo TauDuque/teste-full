@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=EB+Garamond&family=Tourney&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+
+@import "react-alice-carousel/lib/alice-carousel.css";
+
 /*
 =============== 
 Variables
@@ -289,5 +292,8 @@ form
     align-items: center;
     height: 100%;
     width: 56%;
+  }
+  .mobile-links {
+    display: none;
   }
 }

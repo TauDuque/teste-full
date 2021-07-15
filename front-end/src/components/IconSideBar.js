@@ -30,7 +30,7 @@ const IconSideBar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/singleworker">
+          <Link to="/starter">
             <img className="grow" src={SglWorker_icn} alt="icon" />
           </Link>
         </li>

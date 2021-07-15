@@ -1,4 +1,4 @@
-/* import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   TextField,
   Box,
@@ -7,6 +7,7 @@ import {
   RadioGroup,
   FormControlLabel,
 } from "@material-ui/core";
+import { useHistory } from "react-router";
 import styled from "styled-components";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
@@ -48,11 +49,19 @@ const useStyles = makeStyles((theme) => ({
 
 const UpdatePage = () => {
   const classes = useStyles();
-  const { api, showExtra, funcionario, is_loading, fetchSingleData } =
-    useGlobalContext();
+  const { api, showExtra, funcionario, is_loading } = useGlobalContext();
+  const history = useHistory();
 
-  const { nome, email, data_nascimento, data_admissao, setor, cargo, nivel } =
-    funcionario;
+  const {
+    id,
+    nome,
+    email,
+    data_nascimento,
+    data_admissao,
+    setor,
+    cargo,
+    nivel,
+  } = funcionario;
 
   const [name, setName] = useState("");
   const [workerEmail, setWorkerEmail] = useState("");
@@ -101,8 +110,10 @@ const UpdatePage = () => {
     );
   }
 
-  async function updateHandler() {
+  async function updateHandler(e) {
+    e.preventDefault();
     const data = {
+      id: id,
       nome: name,
       email: email,
       data_nascimento: birth,
@@ -110,10 +121,10 @@ const UpdatePage = () => {
       setor: sector,
       cargo: position,
       nivel: level,
-      audit_data_insert: now,
+      audit_data_update: now,
     };
-    const newData = await api.put("funcionarios" / { id }, data);
-    console.log(newData);
+    const newData = await api.put("funcionarios", data);
+    history.push("/starter");
   }
 
   useEffect(() => {
@@ -308,7 +319,7 @@ const UpdatePage = () => {
             type="submit"
             className="primary-btn primary-btn-2 grow form-btn"
           >
-            Cadastrar
+            Atualizar
           </button>
         </div>
       </form>
@@ -357,4 +368,3 @@ const Wrapper = styled.section`
 `;
 
 export default UpdatePage;
- */

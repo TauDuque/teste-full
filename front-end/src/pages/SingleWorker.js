@@ -4,6 +4,7 @@ import { useParams, useHistory, Link } from "react-router-dom";
 import { SglWorker_icn } from "../assets";
 import { useGlobalContext } from "../context";
 import { TextField } from "@material-ui/core";
+import { MobileLinks } from "../components";
 
 const SingleWorker = () => {
   const { fetchSingleData, funcionario, showExtra, api } = useGlobalContext();
@@ -32,30 +33,19 @@ const SingleWorker = () => {
     showExtra();
   }, []);
 
-  async function updateHandler(id) {
-    const data = {
-      nome: name,
-    };
-    const newData = await api.put(`/funcionarios/${id}`, { data });
-    console.log(newData);
-    history.push("/starter");
-  }
-
   return (
     <Wrapper>
+      <div className="mobile-links">
+        <MobileLinks />
+      </div>
       <h2>Dados do Funcionário</h2>
       <div>
         <img src={SglWorker_icn} alt="icon" />
       </div>
       <hr />
       <div>
-        <TextField
-          required
-          label="Nome Completo"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          variant="filled"
-        ></TextField>
+        <span>Nome:</span>
+        <h4>{nome}</h4>
       </div>
       <div>
         <span>E-mail:</span>
@@ -89,14 +79,14 @@ const SingleWorker = () => {
         >
           Deletar
         </button>
-
-        <button
-          type="button"
-          className="primary-btn primary-btn-2 grow sgl-worker-btn second-btn"
-          onClick={() => updateHandler()}
-        >
-          Atualizar
-        </button>
+        <Link to="/updatepage">
+          <button
+            type="button"
+            className="primary-btn primary-btn-2 grow sgl-worker-btn second-btn"
+          >
+            Atualizar
+          </button>
+        </Link>
       </div>
     </Wrapper>
   );
@@ -106,8 +96,8 @@ const Wrapper = styled.section`
   color: var(--classic-black);
   background: var(--white-smoke);
   position: absolute;
-  top: 45px;
-  left: 8px;
+  top: 55px;
+  left: 25px;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -156,6 +146,22 @@ const Wrapper = styled.section`
       #ff3d77
     );
   }
+  .mobile-links {
+    display: block;
+    margin-bottom: 15px;
+    position: absolute;
+    top: -30px;
+    left: 20px;
+  }
+  .mobile-links ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  .mobile-links ul li {
+    padding: 10px;
+  }
   @media (min-width: 992px) {
     position: static;
     height: 85%;
@@ -165,7 +171,9 @@ const Wrapper = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    .mobile-links {
+      display: none;
+    }
     .sgl-worker-btn {
       margin-top: 5px;
       margin: 25px;

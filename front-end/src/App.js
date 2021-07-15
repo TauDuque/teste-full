@@ -24,6 +24,9 @@ function App() {
           <Route exact path="/starter">
             <Starter />
           </Route>
+          <Route exact path="/updatepage">
+            <UpdatePage />
+          </Route>
         </Switch>
         {extra_menus && <IconSideBar />}
       </Router>

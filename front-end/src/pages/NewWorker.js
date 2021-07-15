@@ -10,8 +10,10 @@ import {
 import styled from "styled-components";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
+import { useHistory } from "react-router-dom";
 import { useGlobalContext } from "../context";
 import moment from "moment";
+import { MobileLinks } from "../components";
 
 const useStyles = makeStyles((theme) => ({
   textField: {
@@ -55,8 +57,8 @@ const NewWorker = () => {
   const [sector, setSector] = useState("");
   const [position, setPosition] = useState("");
   const [level, setLevel] = useState("");
+  const history = useHistory();
 
-  console.log(name, email, hiring, birth, sector, position, level);
   const now = moment().format("MM/DD/YYYY HH:mm", "pt");
 
   const handleRadioSector = (e) => {
@@ -86,7 +88,8 @@ const NewWorker = () => {
     );
   }
 
-  async function submitHandler() {
+  async function submitHandler(e) {
+    e.preventDefault();
     const data = {
       nome: name,
       email: email,
@@ -98,7 +101,7 @@ const NewWorker = () => {
       audit_data_insert: now,
     };
     const newData = await api.post("funcionarios", data);
-    console.log(newData);
+    history.push("/starter");
   }
 
   useEffect(() => {
@@ -107,6 +110,9 @@ const NewWorker = () => {
 
   return (
     <Wrapper className="center-att">
+      <div className="mobile-links">
+        <MobileLinks />
+      </div>
       <form className="form-container" onSubmit={submitHandler}>
         <div>
           <h3>Cadastrar Novo Funcionário</h3>
@@ -302,12 +308,30 @@ const Wrapper = styled.section`
   h3 {
     font-family: var(--secondary-font);
   }
+  .mobile-links {
+    display: block;
+    margin-bottom: 15px;
+    position: absolute;
+    top: 5px;
+  }
+  .mobile-links ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  .mobile-links ul li {
+    padding: 10px;
+  }
 
   @media (min-width: 992px) {
     margin-top: 8px;
-  }
-  h3 {
-    margin-top: 15px;
+    h3 {
+      margin-top: 15px;
+    }
+    .mobile-links {
+      display: none;
+    }
   }
   .form-btn {
     margin-top: 5px;
@@ -318,6 +342,7 @@ const Wrapper = styled.section`
     6px 5px 10px rgba(51, 138, 255, 0.45);
     font-size: 20px;
 }
+
   }
 `;
 

@@ -1,10 +1,12 @@
 import React, { useEffect, useContext, useReducer } from "react";
 import styled from "styled-components";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useGlobalContext } from "../context";
+import moment from "moment";
+import { MobileLinks } from "../components";
 
 const Workers = () => {
-  const { funcionarios, showExtra, fetchData } = useGlobalContext();
+  const { funcionarios, showExtra, fetchData, hideExtra } = useGlobalContext();
 
   useEffect(() => {
     showExtra();
@@ -13,6 +15,9 @@ const Workers = () => {
 
   return (
     <Wrapper>
+      <div className="mobile-links">
+        <MobileLinks />
+      </div>
       <table>
         <thead>
           <tr className="table-headers">
@@ -46,7 +51,6 @@ const Workers = () => {
                 <td>
                   <Link to={`/workers/${id}`}>{nome}</Link>
                 </td>
-
                 <td>
                   <Link to={`/workers/${id}`}>{email}</Link>
                 </td>
@@ -69,7 +73,10 @@ const Workers = () => {
                   <Link to={`/workers/${id}`}>{audit_data_insert}</Link>
                 </td>
                 <td>
-                  <Link to={`/workers/${id}`}>{audit_data_update}</Link>
+                  <Link to={`/workers/${id}`}>
+                    {audit_data_update &&
+                      moment(audit_data_update).format("MM/DD/YYYY HH:mm")}
+                  </Link>
                 </td>
               </tr>
             );
@@ -88,6 +95,19 @@ const Wrapper = styled.section`
   }
   a {
     color: var(--classic-black);
+  }
+  .mobile-links {
+    display: block;
+    margin-bottom: 15px;
+  }
+  .mobile-links ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  .mobile-links ul li {
+    padding: 10px;
   }
 
   .table-headers th {
@@ -114,13 +134,18 @@ const Wrapper = styled.section`
   }
 
   @media (min-width: 992px) {
-    background: var(--clr-grey);
+    background: transparent;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     height: 90%;
     width: 65%;
     margin-left: 15px;
+
+    .mobile-links {
+      display: none;
+    }
+  }
   }
 `;
 
