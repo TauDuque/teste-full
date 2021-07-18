@@ -43,3 +43,6 @@
 
 #### Visualização dos dados dos funcionários: <br/>
 <img src="https://github.com/TauDuque/teste-full/blob/main/tables_ac.gif" height="400px" width="650"/><br/>
+
+#### Algumas imagens do banco de dados: <br/>
+<img src="https://github.com/TauDuque/teste-full/blob/main/database_ac.gif" height="400px" width="650"/><br/>
