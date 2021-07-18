@@ -1,6 +1,7 @@
 import React, { useEffect, useContext, useReducer } from "react";
 import reducer from "./reducer";
 import axios from "axios";
+import paginate from "./components";
 
 import {
   SHOW_LOADING,

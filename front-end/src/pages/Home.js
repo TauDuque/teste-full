@@ -4,7 +4,14 @@ import { Link } from "react-router-dom";
 import { useGlobalContext } from "../context";
 
 const Home = () => {
-  const { showExtra } = useGlobalContext();
+  const { showExtra, hideExtra, extra_menus } = useGlobalContext();
+
+  useEffect(() => {
+    if (extra_menus) {
+      hideExtra();
+    }
+  }, []);
+
   return (
     <Wrapper className="section section-center">
       <h2>Bem-Vindo</h2>

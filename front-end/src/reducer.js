@@ -9,6 +9,8 @@ import {
   GET_SINGLE_DATA_SUCCESS,
 } from "./action";
 
+import { paginate } from "./components";
+
 const reducer = (state, action) => {
   if (action.type === SHOW_EXTRA) {
     return { ...state, extra_menus: true };
@@ -31,7 +33,9 @@ const reducer = (state, action) => {
   }
 
   if (action.type === GET_DATA_SUCCESS) {
-    return { ...state, is_loading: false, funcionarios: action.payload };
+    const pages = paginate(action.payload).map((item) => item);
+    console.log(pages);
+    return { ...state, is_loading: false, funcionarios: pages };
   }
 
   if (action.type === GET_SINGLE_DATA_START) {

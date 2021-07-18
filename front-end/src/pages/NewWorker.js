@@ -101,7 +101,7 @@ const NewWorker = () => {
       audit_data_insert: now,
     };
     const newData = await api.post("funcionarios", data);
-    history.push("/starter");
+    history.push("/workers");
   }
 
   useEffect(() => {

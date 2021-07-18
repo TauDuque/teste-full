@@ -124,7 +124,7 @@ const UpdatePage = () => {
       audit_data_update: now,
     };
     const newData = await api.put("funcionarios", data);
-    history.push("/starter");
+    history.push(`/workers/${id}`);
   }
 
   useEffect(() => {
@@ -140,7 +140,7 @@ const UpdatePage = () => {
     <Wrapper className="center-att">
       <form className="form-container" onSubmit={updateHandler}>
         <div>
-          <h3>Cadastrar Novo Funcionário</h3>
+          <h3>Atualize os Dados do Funcionário</h3>
         </div>
 
         <div>

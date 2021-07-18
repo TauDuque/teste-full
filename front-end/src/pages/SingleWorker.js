@@ -74,7 +74,7 @@ const SingleWorker = () => {
       <div>
         <button
           type="button"
-          className="primary-btn primary-btn-2 grow sgl-worker-btn"
+          className="primary-btn primary-btn-2 grow sgl-worker-btn "
           onClick={() => deleteWorkerData()}
         >
           Deletar
@@ -146,6 +146,7 @@ const Wrapper = styled.section`
       #ff3d77
     );
   }
+
   .mobile-links {
     display: block;
     margin-bottom: 15px;
